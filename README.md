@@ -6,5 +6,5 @@
 `java -jar yscInterpreter.jar -yscp Main/`
 
 
-# For developers:
+# For ysc develop:
 [Developer Readme](Developer/DevReadme.md)
