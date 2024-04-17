@@ -167,9 +167,9 @@ public class YscParseUtils {
                 String[] s = parseIfBody(ifBody.trim());
                 ReturnObject returnObject = null;
                 if(WorkIfCondition(parseVar(isolatedYsc, s[0]), parseVar(isolatedYsc, s[2]), s[1]))
-                    returnObject = parseFunc(isolatedYsc, body, new Object[0]);
+                    returnObject = parseFunc(isolatedYsc, body, args);
                 else if(isElse)
-                    returnObject = parseFunc(isolatedYsc, elseBody, new Object[0]);
+                    returnObject = parseFunc(isolatedYsc, elseBody, args);
 
                 if(returnObject != null && !returnObject.isDefault) return returnObject;
             }else if(isNextCharsEquals(bytes, i, "while")){
@@ -183,7 +183,7 @@ public class YscParseUtils {
 
                 String[] s = parseIfBody(ifBody.trim());
                 while (WorkIfCondition(parseVar(isolatedYsc, s[0]), parseVar(isolatedYsc, s[2]), s[1])) {
-                    ReturnObject returnObject =  parseFunc(isolatedYsc, body, new Object[0]);
+                    ReturnObject returnObject =  parseFunc(isolatedYsc, body, args);
                     if(returnObject != null && !returnObject.isDefault) return returnObject;
                 }
             }else{
@@ -555,7 +555,6 @@ public class YscParseUtils {
 
                 if(obj instanceof Classes.Class) {
                     ysc = (Ysc) obj;
-                    System.out.println("VAR: "+current);
                 }
                 else if(funcsChain.length != 1 && current != funcsChain.length)
                     throw new RuntimeException("Return value of '."+var+"' <- not contains LangClass!");
