@@ -1,4 +1,4 @@
-# Docs for ysc developer
+# Docs for ysc developing
 
 ### Spaces
 Default function on space: `func main{}`
