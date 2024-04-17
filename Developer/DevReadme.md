@@ -1,9 +1,9 @@
 # Docs for ysc developing
 
-### Spaces
+### Space
 Default function on space: `func main{}`
 
-<b>Spaces cannot support running code than:</b>
+<b>Space cannot support running code than:</b>
 
 * Mark file as a <u>class</u> <i>(must be specified at the beginning of the .ysc file!)</i>
 ```ysc
