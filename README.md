@@ -7,4 +7,4 @@
 
 
 # For developers:
-Poka netu.
+[Developer Readme](Developer/DevReadme.md)
