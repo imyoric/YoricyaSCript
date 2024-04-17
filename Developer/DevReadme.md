@@ -33,7 +33,7 @@ func main{
 }
 ```
 
-[More docs](Developer/Spaces.md)
+[More docs](/Developer/Spaces.md)
 
 ___
 ### Functions
@@ -53,8 +53,8 @@ func main{
   println(this.args.0); //or println(this.args.[0]);
 }
 ```
-[Internal default function](Developer/iFunctions.md)
-[More docs](Developer/Functions.md)
+[Internal default function](/Developer/iFunctions.md)
+[More docs](/Developer/Functions.md)
 
 ___
 ### Variables
@@ -89,7 +89,7 @@ ___
     var a -= 2;
 ```
 
-[More docs](Developer/Vars.md)
+[More docs](/Developer/Vars.md)
 
 ___
 ### Modules
@@ -104,8 +104,8 @@ func main{
 }
 ```
 
-[Internal Modules](Developer/internalModules.md)
-[More docs](Developer/Modules.md)
+[Internal Modules](/Developer/internalModules.md)
+[More docs](/Developer/Modules.md)
 
 ___
 ### Classes
@@ -120,5 +120,5 @@ func main{
 }
 ```
 
-[Internal Classes](Developer/internalClasses.md)
-[More docs](Developer/Classes.md)
+[Internal Classes](/Developer/internalClasses.md)
+[More docs](/Developer/Classes.md)
