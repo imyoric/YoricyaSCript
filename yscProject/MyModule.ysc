@@ -1,0 +1,7 @@
+module MyMath;
+
+import Math;
+
+func bind{
+    println("Bind!");
+}

@@ -1,0 +1,11 @@
+class MyClass;
+
+var socket = null;
+
+func init{
+
+}
+
+func start{
+    println(port);
+}
