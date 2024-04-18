@@ -5,12 +5,12 @@ Default function on space: `func main{}`
 
 <b>Space cannot support running code than:</b>
 
-* Mark file as a <u>class</u> <i>(must be specified at the beginning of the .ysc file!)</i>
+* Mark file as a <u>class</u> <i>(must be specified at the beginning of the .ysc file!) (Optional)</i>
 ```ysc
 class ClassName;
 ```
 
-* Mark file as a <u>module</u> <i>(must be specified at the beginning of the .ysc file!)</i>
+* Mark file as a <u>module</u> <i>(must be specified at the beginning of the .ysc file!) (Optional)</i>
 ```ysc
 module ModuleName;
 ```
