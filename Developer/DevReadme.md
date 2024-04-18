@@ -105,6 +105,7 @@ ___
 ___
 ### Modules
 <b>Call to functions in modules only by `->`</b>
+
 <b>Modules can only contain functions, unlike classes</b>
 
 
@@ -123,6 +124,7 @@ func main{
 ___
 ### Classes
 <b>Call to class element only by `.`</b>
+
 <b>Classes can contain functions and other objects, unlike modules</b>
 
 * Creating and using:
