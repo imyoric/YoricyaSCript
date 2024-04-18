@@ -11,6 +11,8 @@ import ru.yoricya.ysc.YscFiles.YscModule;
 import ru.yoricya.ysc.YscFiles.YscScript;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class Ysc {
@@ -128,6 +130,7 @@ public class Ysc {
             }
         });
 
+        List<String> mainScripts = new ArrayList<>();
         if(yscFiles != null) for(File file: yscFiles) {
             if(file.isDirectory()){
                 loadProjectDir(file.getAbsolutePath());
@@ -137,17 +140,24 @@ public class Ysc {
             String script = LangFileUtils.readFile(file.getAbsolutePath());
             if (script == null) continue;
 
+            short fileType = YscParseUtils.getFileType(script);
+            if(fileType == DefaultFile.SCRIPT_FILE_TYPE){
+                mainScripts.add(script);
+                continue;
+            }
+
             Ysc y = new Ysc();
             DefaultFile deffile = y.parse1(script);
-
-            if(deffile instanceof YscScript)
-                objects = new LinkVariableMap(y.objects);
 
             if(deffile instanceof YscClass)
                 ((YscClass) deffile).addClass();
 
             if(deffile instanceof YscModule)
                 ((YscModule) deffile).addModule();
+        }
+
+        for(String s: mainScripts){
+            parse1(s);
         }
 
         return this;
