@@ -15,7 +15,7 @@ public class LangArrays extends Modules.NativeModule {
 
                 return new Object[Integer.parseInt(args[0].toString())];
             }
-        });
+        }.addNeedArg("arrayLength", "Length of array"));
 
         addFunc("copyArray", new NativeFunction() {
             @Override

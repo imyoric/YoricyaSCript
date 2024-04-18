@@ -1,8 +1,11 @@
-import System;
+import Arrays;
 
 func main{
-    println(this.args.length);
-    if(this.args.length > 1){
-        println(this.args.[0]);
-    }
+    var a = new("MyClass");
+    println(a.serialize());
+}
+
+@Args-> integer1: "One digit.", integer2: "Two digit.";
+func abc{
+    return 1;
 }

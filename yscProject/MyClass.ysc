@@ -1,6 +1,6 @@
 class MyClass;
 
-var socket = null;
+var socket = "sdf";
 
 func init{
 

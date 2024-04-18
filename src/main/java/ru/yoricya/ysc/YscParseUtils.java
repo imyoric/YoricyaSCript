@@ -1,6 +1,5 @@
 package ru.yoricya.ysc;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import ru.yoricya.ysc.Classes.Classes;
 import ru.yoricya.ysc.LangObjects.*;
 import ru.yoricya.ysc.Modules.LangArrays;
@@ -9,15 +8,22 @@ import ru.yoricya.ysc.YscFiles.DefaultFile;
 import ru.yoricya.ysc.YscFiles.YscClass;
 import ru.yoricya.ysc.YscFiles.YscModule;
 import ru.yoricya.ysc.YscFiles.YscScript;
-import sun.nio.fs.BsdFileSystemProvider;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class YscParseUtils {
+
+    public static short getFileType(String script){
+        byte[] bytes = script.getBytes();
+        replaceComment(bytes, 0);
+
+        if(isNextCharsEquals(bytes, 0, "class")) return DefaultFile.CLASS_FILE_TYPE;
+        if(isNextCharsEquals(bytes, 0, "module")) return DefaultFile.MODULE_FILE_TYPE;
+        return DefaultFile.SCRIPT_FILE_TYPE;
+    }
     public static DefaultFile ParseFunctionalSpace(Ysc ysc, String script){
         byte[] bytes = script.getBytes();
         replaceComment(bytes, 0);
@@ -84,6 +90,8 @@ public class YscParseUtils {
 
                 if(module == null)
                     throw new RuntimeException("Unknown module '"+importName+"'!");
+
+                ysc.putVar(module.classPath, module);
 
                 for(Function func: module.getAllFuncs()){
                     ysc.putVar(module.classPath+"->"+func.FuncName, func);
