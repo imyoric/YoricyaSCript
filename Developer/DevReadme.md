@@ -53,6 +53,17 @@ func main{
   println(this.args.0); //or println(this.args.[0]);
 }
 ```
+
+* Call to function:
+```ysc
+func main{
+  test("arg0", "arg1", "arg2");
+}
+
+func test{
+  println(this.args.0); //or println(this.args.[0]);
+}
+```
 [Internal default function](/Developer/iFunctions.md)
 [More docs](/Developer/Functions.md)
 
