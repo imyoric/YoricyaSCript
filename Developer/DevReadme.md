@@ -64,7 +64,7 @@ func test{
   println(this.args.0); //or println(this.args.[0]);
 }
 ```
-[Internal default function](/Developer/iFunctions.md)
+[Internal functions on default space](/Developer/iFunctions.md)
 [More docs](/Developer/Functions.md)
 
 ___
