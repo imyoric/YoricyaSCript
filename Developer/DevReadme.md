@@ -5,12 +5,12 @@ Default function on space: `func main{}`
 
 <b>Space cannot support running code than:</b>
 
-* Mark file as a <u>class</u> <i>(must be specified at the beginning of the .ysc file!)</i>
+* Mark file as a <u>class</u> <i>(must be specified at the beginning of the .ysc file!) (Optional)</i>
 ```ysc
 class ClassName;
 ```
 
-* Mark file as a <u>module</u> <i>(must be specified at the beginning of the .ysc file!)</i>
+* Mark file as a <u>module</u> <i>(must be specified at the beginning of the .ysc file!) (Optional)</i>
 ```ysc
 module ModuleName;
 ```
@@ -104,7 +104,10 @@ ___
 
 ___
 ### Modules
-<b>Call to functions in modules only by `->`</b>
+<b>Call to functions in modules only by `->`.</b>
+<b>Modules can only contain functions, unlike classes</b>
+
+<b>All modules support the `->serialize()` function to get the module as a script file.</b>
 
 * importing and using:
 ```ysc
@@ -120,7 +123,10 @@ func main{
 
 ___
 ### Classes
-<b>Call to class element only by `.`</b>
+<b>Call to class element only by `.`.</b>
+<b>Classes can contain functions and other objects, unlike modules</b>
+
+<b>All classes support the `.serialize()` function to get the class as a script file.</b>
 
 * Creating and using:
 ```ysc
