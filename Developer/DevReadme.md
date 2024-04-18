@@ -104,10 +104,10 @@ ___
 
 ___
 ### Modules
-<b>Call to functions in modules only by `->`</b>
-
+<b>Call to functions in modules only by `->`.</b>
 <b>Modules can only contain functions, unlike classes</b>
 
+<b>All modules support the `->serialize()` function to get the module as a script file.</b>
 
 * importing and using:
 ```ysc
@@ -123,9 +123,10 @@ func main{
 
 ___
 ### Classes
-<b>Call to class element only by `.`</b>
-
+<b>Call to class element only by `.`.</b>
 <b>Classes can contain functions and other objects, unlike modules</b>
+
+<b>All classes support the `.serialize()` function to get the class as a script file.</b>
 
 * Creating and using:
 ```ysc
