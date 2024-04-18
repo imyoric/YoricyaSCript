@@ -38,14 +38,14 @@ public class LangSystem extends Modules.NativeModule {
             }
         });
 
-        addFunc("ysc.version", new NativeFunction() {
+        addFunc("yscVersion", new NativeFunction() {
             @Override
             public Object run(Ysc ysc, Object[] args) {
                 return YSC_VERSION;
             }
         });
 
-        addFunc("ysc.versionCode", new NativeFunction() {
+        addFunc("yscVersionCode", new NativeFunction() {
             @Override
             public Object run(Ysc ysc, Object[] args) {
                 return YSC_VERSION_CODE;

@@ -1,11 +1,5 @@
-import Arrays;
+import System;
 
-func main{
-    var a = new("MyClass");
-    println(a.serialize());
-}
-
-@Args-> integer1: "One digit.", integer2: "Two digit.";
-func abc{
-    return 1;
+func main {
+    println(System->yscVersionCode());
 }
