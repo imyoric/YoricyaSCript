@@ -1,5 +1,9 @@
-import System;
+import Thread;
 
-func main {
-    println(System->yscVersionCode());
+func main{
+    Thread->runAsThreadPool(func{
+       println("Hi from thread pool!");
+    });
+
+    println("Hi from main thread!");
 }

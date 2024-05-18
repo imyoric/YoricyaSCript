@@ -107,7 +107,7 @@ public class YscParseUtils {
     }
 
     public static ReturnObject parseFunc(Ysc ysc, String functionBody, Object[] args){
-        byte[] bytes = functionBody.getBytes();
+        byte[] bytes = functionBody.trim().getBytes();
         if(bytes[0] == '{') bytes[0] = 0;
         if(bytes[bytes.length-1] == '}')  bytes[bytes.length-1] = 0;
         bytes = new String(bytes).trim().getBytes();
@@ -139,6 +139,16 @@ public class YscParseUtils {
                     i += varName.length()+1;
                 }
                 varName = varName.trim();
+
+//                if(isNextCharsEquals(bytes, i, "= lambda")){
+//                    i+="= lambda".length();
+//
+//                    String body = parseCodeBlock(bytes, i);
+//                    i+=body.length();
+//
+//                    isolatedYsc.putVar(varName, new Function(body));
+//                    continue;
+//                }
 
                 String varData = getNextString(bytes, i, ';');
                 i += varData.length()+1;
@@ -511,11 +521,14 @@ public class YscParseUtils {
 
         startWith--;
         boolean isOpenStrBlock = false;
+        boolean isOpenCodeBlock = false;
         while(startWith != array.length-1){
             startWith++;
 
-            if(array[startWith] == '"') isOpenStrBlock = !isOpenStrBlock;
-            if(array[startWith] == endSym && !isOpenStrBlock) return s;
+            if(array[startWith] == '"' && endSym != '"') isOpenStrBlock = !isOpenStrBlock;
+            if(array[startWith] == '{' && (endSym != '{' && endSym != '}')) isOpenCodeBlock = true;
+            if(array[startWith] == '}' && (endSym != '{' && endSym != '}')) isOpenCodeBlock = false;
+            if(array[startWith] == endSym && !isOpenStrBlock && !isOpenCodeBlock) return s;
 
             s += (char) array[startWith];
         }
@@ -533,6 +546,7 @@ public class YscParseUtils {
 
     static Object parseVar(Ysc ysc, String str){
         str = str.trim();
+
         try{
             return Integer.parseInt(str);
         }catch (Exception ignore){}
@@ -594,6 +608,12 @@ public class YscParseUtils {
             }
 
             return ysc.getVar(str);
+        }else if(str.startsWith("lambda")){
+            String scr = parseCodeBlock(str.getBytes(), "lambda".length());
+            return YscParseUtils.parseFunc(ysc, scr, null);
+        }else if(str.startsWith("func")){
+            String scr = parseCodeBlock(str.getBytes(), "func".length());
+            return new Function(scr);
         }else{
             int current = 0;
             String[] funcsChain = splitSkippedSyntaxSym(str, '.');

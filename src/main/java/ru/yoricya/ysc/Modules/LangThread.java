@@ -12,7 +12,6 @@ public class LangThread extends Modules.NativeModule {
     public LangThread() {
         super("Thread");
 
-
         addFunc("runAsThreadPool", new NativeFunction() {
             @Override
             public Object run(Ysc ysc, Object[] args) {

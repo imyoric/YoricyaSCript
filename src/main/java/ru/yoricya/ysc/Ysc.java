@@ -92,6 +92,52 @@ public class Ysc {
                 return clas;
             }
         });
+
+        objects.put("serialize", new NativeFunction() {
+            @Override
+            public Object run(Ysc ysc, Object[] args) {
+                return serialize();
+            }
+        });
+    }
+
+    public String serialize(){
+        String space = "";
+
+        for(String key: this.getVarsKeySet()){
+            Object get = this.getVar(key);
+
+            if(get instanceof Function){
+                Function fn = (Function) get;
+                if(fn.NeededArgs != null){
+                    space += "\n";
+                    space += "@Args -> ";
+                    if(fn.NeededArgs.isEmpty()){
+                        space += "\"None args\"";
+                    }else for(String ks: fn.NeededArgs.keySet()){
+                        String comment = fn.NeededArgs.get(ks);
+                        space += ks+": "+comment+"\",";
+                    }
+
+                    space += ";";
+                }
+
+                if(fn instanceof NativeFunction){
+                    space += "\nnative func "+key;
+                    space += "{}\n";
+                }else if(fn.Body != null){
+                    space += "\nfunc "+key;
+                    space += fn.Body+"\n";
+                }else{
+                    space += "\nnobody func "+key;
+                    space += "{}\n";
+                }
+            }else{
+                space += "\nvar "+key+" \""+get+"\" //WARN, unknown type\n";
+            }
+        }
+
+        return space;
     }
 
     public int parse(String script){
