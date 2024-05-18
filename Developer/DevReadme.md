@@ -15,6 +15,8 @@ class ClassName;
 module ModuleName;
 ```
 
+<b>Other:</b>
+
 * Import modules:
 ```ysc
 import System;
