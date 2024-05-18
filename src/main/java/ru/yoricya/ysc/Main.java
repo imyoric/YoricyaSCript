@@ -23,11 +23,10 @@ public class Main {
             }else if(args[i].equals("-ysc") && args.length-i > 1){
                 Ysc ysc = new Ysc();
                 String script = LangFileUtils.readFile(args[i+1]);
-
+                int code = ysc.parse(script);
                 if(isBench)
                     System.err.println("[INTERPRETER] Script success ended by "+(System.currentTimeMillis()-startTime)+"ms");
-
-                System.exit(ysc.parse(script));
+                System.exit(code);
             }else if(args[i].equals("-bench") && args.length-i > 1){
                 isBench = true;
             }
